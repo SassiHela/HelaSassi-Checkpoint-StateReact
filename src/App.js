@@ -31,7 +31,11 @@ class App extends React.Component {
           <span>{"0 second"}</span>
         )}
 
-        <button type="button" class="btn btn-link" onClick={this.handleClick}>
+        <button
+          type="button"
+          className="btn btn-link"
+          onClick={this.handleClick}
+        >
           Show me
         </button>
 
@@ -58,21 +62,19 @@ class App extends React.Component {
     var m = Math.floor((d % 3600) / 60);
     var s = Math.floor((d % 3600) % 60);
 
-    var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
-    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
-    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+    var hDisplay = h > 0 ? h + (h === 1 ? " hour, " : " hours, ") : "";
+    var mDisplay = m > 0 ? m + (m === 1 ? " minute, " : " minutes, ") : "";
+    var sDisplay = s > 0 ? s + (s === 1 ? " second" : " seconds") : "";
     return hDisplay + mDisplay + sDisplay;
   }
 
   //method is called after the component is rendered
   componentDidMount() {
-    {
-      let count = 0;
-      setInterval(() => {
-        count++;
-        return this.setState({ timeShow: this.secondsToHms(count) });
-      }, 1000);
-    }
+    let count = 0;
+    setInterval(() => {
+      count++;
+      return this.setState({ timeShow: this.secondsToHms(count) });
+    }, 1000);
   }
 }
 
